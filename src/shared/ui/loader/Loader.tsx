@@ -1,8 +1,9 @@
 import './loader.scss';
+import React from 'react';
 
 type Props = {};
 
-export default function Loader({}: Props) {
+export const Loader: React.FC<any> = ({}: Props) => {
   return (
     <div className="loader">
       <div className="scene">
@@ -72,4 +73,4 @@ export default function Loader({}: Props) {
       </div>
     </div>
   );
-}
+};

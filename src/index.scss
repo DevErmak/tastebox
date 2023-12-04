@@ -1,0 +1,52 @@
+$palettes: (
+  neutral: (
+    white: #ffffff,
+    beaver: #b79987,
+  ),
+  tangerine: (
+    branding: #ffc634,
+    contrast: #fde12d,
+    secondary: #917c78,
+    third: #545e56,
+    800: #594338,
+    700: #aca399,
+    600: #b69c7e,
+    500: #cfbaa0,
+    400: #d7c7b4,
+    300: #ebe8d6,
+    200: #f7f6ec,
+    100: #fafaf5,
+  ),
+  salmon: (
+    branding: #ffc634,
+    contrast: #fde12d,
+    secondary: #917c78,
+    third: #545e56,
+    800: #594338,
+    700: #aca399,
+    600: #b69c7e,
+    500: #cfbaa0,
+    400: #d7c7b4,
+    300: #ebe8d6,
+    200: #f7f6ec,
+    100: #fafaf5,
+  ),
+);
+:root {
+  @each $colorname, $palette in $palettes {
+    @each $key, $value in $palette {
+      $keyname: '--palette-' + $colorname + '-' + $key;
+      #{$keyname}: #{$value};
+    }
+  }
+}
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
