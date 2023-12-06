@@ -1,6 +1,20 @@
+.home-page {
+  display: flex;
+  width: 1400px;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--palette-tangerine-200);
+}
 .text-title {
   color: var(--palette-neutral-white);
   text-align: center;
+  margin: unset;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .section1 {
   display: flex;
@@ -10,7 +24,7 @@
   align-items: center;
   align-self: stretch;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 24.76%),
-    url(<../../../../../../shared/image/section1.png),
+    url(<../../../../../../shared/image/section1/background.png),
     lightgray 0px -1122px / 100% 247.642% no-repeat;
   background-size: cover;
   background-position-y: 100%;
@@ -20,4 +34,77 @@
   flex-direction: column;
   align-items: center;
   align-self: stretch;
+}
+.section2-head-png {
+  height: 394px;
+  align-self: stretch;
+  background: lightgray 0px -352.893px / 100% 203.13% no-repeat;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.section2-plate-png {
+  height: 332px;
+  flex: 1 0 0;
+  object-fit: cover;
+  object-position: center;
+}
+.frame1 {
+  display: flex;
+  height: 680px;
+  padding: 0px 195px;
+  align-items: center;
+  gap: 50px;
+  align-self: stretch;
+}
+.section2-text-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  flex: 1 0 0;
+}
+.tastebox-to-meal {
+  align-self: stretch;
+  color: var(--palette-tangerine-secondary);
+  margin: unset;
+}
+.text-about-tastebox-to-meal {
+  align-self: stretch;
+  color: var(--palette-tangerine-800);
+  margin: unset;
+}
+
+.section2-text-right {
+  flex: 1 0 0;
+  color: var(--palette-tangerine-800);
+  margin: unset;
+}
+.section3 {
+  display: flex;
+  padding: 64px 0px 56px 0px;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 80px 80px 0px 0px;
+  background: var(--palette-tangerine-300);
+}
+.section3-frame-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+}
+.section3-title {
+  align-self: stretch;
+  color: var(--palette-tangerine-800);
+  text-align: center;
+  margin: unset;
+}
+.section3-under-title {
+  align-self: stretch;
+  color: var(--palette-tangerine-800);
+  text-align: center;
+  margin: unset;
 }
