@@ -1,6 +1,9 @@
 .swiper {
   width: 1400px;
 }
+.swiper-slide {
+  width: 400px !important;
+}
 
 .home-page {
   display: flex;
@@ -148,6 +151,7 @@
   flex-direction: column;
   align-items: center;
   gap: 22px;
+  width: 400px;
 }
 .section3-under-menu-text-container {
   display: flex;

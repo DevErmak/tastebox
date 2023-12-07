@@ -84,12 +84,10 @@ export const Section3: React.FC<any> = ({}: Props) => {
       </div>
       <div className="size-swiper">
         <Swiper
-          slidesPerView={3}
+          slidesPerView={'auto'}
           spaceBetween={20}
-          loop={true}
           navigation={true}
-          freeMode={true}
-          modules={[FreeMode, Navigation]}
+          modules={[Navigation]}
           className="mySwiper"
         >
           {dataHealthyTasty[activeTab].map((data, i) => (
