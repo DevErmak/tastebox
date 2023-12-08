@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Ref } from 'react';
 import './button.scss';
 import cn from 'classnames';
 type ButtonTypes = 'submit' | 'reset';
@@ -14,6 +14,7 @@ interface IButtonProps {
   className?: string | string[];
   form?: string;
   onClick?: () => void;
+  buttonRef?: Ref<HTMLButtonElement & HTMLElement>;
 }
 
 export const Button: React.FC<IButtonProps> = ({
@@ -25,6 +26,7 @@ export const Button: React.FC<IButtonProps> = ({
   disabled,
   form,
   size,
+  buttonRef,
 }) => {
   return (
     <button
@@ -33,6 +35,7 @@ export const Button: React.FC<IButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       form={form}
+      ref={buttonRef}
     >
       {children}
     </button>

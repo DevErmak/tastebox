@@ -1,13 +1,14 @@
 import { dataHealthyTasty } from '@/shared/data/data-healthy-tasty';
-import { Typography } from '@/shared/ui';
+import { Button, Typography } from '@/shared/ui';
 import { ReactComponent as SvgCenterDot } from '@/shared/ui/svg/center-dot.svg';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation } from 'swiper/modules';
 import { typeDataHealthyTasty } from '@/shared/data/types';
+import { ReactComponent as SvgArrowRight } from '@/shared/ui/svg/arrow-right.svg';
+import { ReactComponent as SvgArrowLeft } from '@/shared/ui/svg/arrow-left.svg';
+
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/free-mode';
+
 type Props = {};
 
 export const Section3: React.FC<any> = ({}: Props) => {
@@ -15,6 +16,8 @@ export const Section3: React.FC<any> = ({}: Props) => {
   const handleClickSection3MenuElement = (index: typeDataHealthyTasty) => {
     setActiveTab(index);
   };
+  const swiperRef = useRef<any>();
+
   return (
     <div className="section3">
       <div className="section3-frame-title">
@@ -82,13 +85,16 @@ export const Section3: React.FC<any> = ({}: Props) => {
           {'SetMenu' === activeTab ? <SvgCenterDot /> : null}
         </div>
       </div>
-      <div className="size-swiper">
+      <div className="frame-swiper">
         <Swiper
+          onSwiper={(swiper: any) => {
+            swiperRef.current = swiper;
+          }}
           slidesPerView={'auto'}
+          slidesOffsetBefore={30}
+          slidesOffsetAfter={30}
           spaceBetween={20}
-          navigation={true}
-          modules={[Navigation]}
-          className="mySwiper"
+          className="swiper-section3"
         >
           {dataHealthyTasty[activeTab].map((data, i) => (
             <SwiperSlide key={i}>
@@ -149,7 +155,26 @@ export const Section3: React.FC<any> = ({}: Props) => {
               </div>
             </SwiperSlide>
           ))}
+          <Button
+            type="primary"
+            className={'nav-right'}
+            onClick={() => swiperRef?.current?.slideNext()}
+          >
+            <SvgArrowRight />
+          </Button>
+          <Button
+            type="primary"
+            className={'nav-left'}
+            onClick={() => swiperRef?.current?.slidePrev()}
+          >
+            <SvgArrowLeft />
+          </Button>
         </Swiper>
+      </div>
+      <div className="frame-menu-all-products">
+        <Typography type="text-lg" className="section3-all-products">
+          ALL PRODUCTS <SvgArrowRight className="section3-all-products-arrow-right" />
+        </Typography>
       </div>
     </div>
   );
