@@ -7,6 +7,7 @@ import { Section5 } from './section/section5';
 import { Section6 } from './section/section6';
 import { Section7 } from './section/section7';
 import { Section8 } from './section/section8';
+import { Section9 } from './section/section9';
 
 type Props = {};
 export const Home: React.FC<any> = ({}: Props) => {
@@ -20,6 +21,7 @@ export const Home: React.FC<any> = ({}: Props) => {
       <Section6 />
       <Section7 />
       <Section8 />
+      <Section9 />
     </div>
   );
 };

@@ -2,15 +2,43 @@ import { dataSection8 } from '@/shared/data/data-section8';
 import { Button, Typography } from '@/shared/ui';
 import { ReactComponent as SvgArrowRight } from '@/shared/ui/svg/arrow-right.svg';
 import { ReactComponent as SvgArrowLeft } from '@/shared/ui/svg/arrow-left.svg';
-import { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
+import { useEffect, useRef, useState } from 'react';
 
 type Props = {};
 export const Section8: React.FC<any> = ({}: Props) => {
-  const swiperRef = useRef<any>();
-
+  const cardSection8 = useRef<HTMLDivElement>(null);
+  const [isActiveRight, setIsActiveRight] = useState(true);
+  const [isActiveLeft, setIsActiveLeft] = useState(false);
+  const [numberSlide, setNumberSlide] = useState(0);
+  useEffect(() => {
+    if (cardSection8.current) {
+      const x = cardSection8.current.clientWidth / 372;
+      if (numberSlide > 0) setIsActiveLeft(true);
+      else setIsActiveLeft(false);
+      if (numberSlide > x - 1) setIsActiveRight(false);
+      else setIsActiveRight(true);
+    }
+  }, [numberSlide]);
+  const goRight = () => {
+    if (cardSection8.current) {
+      const x = cardSection8.current.clientWidth / 372;
+      if (numberSlide < x - 1) {
+        setNumberSlide(numberSlide + 1);
+        cardSection8.current.style.transform = `translateX(-${372 * (numberSlide + 1)}px)`;
+      }
+    }
+  };
+  const goLeft = () => {
+    if (cardSection8.current) {
+      const x = cardSection8.current.clientWidth / 372;
+      if (numberSlide > 0) {
+        setNumberSlide(numberSlide - 1);
+        cardSection8.current.style.transform = `translateX(-${
+          cardSection8.current.clientWidth - 372 - 372 * (x - numberSlide)
+        }px)`;
+      }
+    }
+  };
   return (
     <div className="section8">
       <div className="section8-title">
@@ -20,47 +48,53 @@ export const Section8: React.FC<any> = ({}: Props) => {
         <div className={'section8-buttons-slide'}>
           <Button
             type="outline"
-            className={'section8-nav-right'}
-            onClick={() => swiperRef?.current?.slideNext()}
+            className={['section8-nav-right', isActiveRight ? '' : 'section8-nav-no-active']}
+            onClick={() => goRight()}
           >
             <SvgArrowRight />
           </Button>
           <Button
             type="outline"
-            className={'section8-nav-left'}
-            onClick={() => swiperRef?.current?.slidePrev()}
+            className={['section8-nav-left', isActiveLeft ? '' : 'section8-nav-no-active']}
+            onClick={() => goLeft()}
           >
             <SvgArrowLeft />
           </Button>
         </div>
       </div>
       <div>
-        <div className="section8-container-card">
-          <Swiper
-            onSwiper={(swiper: any) => {
-              swiperRef.current = swiper;
-            }}
-            slidesPerView={'auto'}
-            spaceBetween={20}
-            className="swiper-section8"
-          >
-            {dataSection8.map((data, i) => (
-              <SwiperSlide key={i}>
-                <div className="section8-card">
-                  <img src={data.image} alt="dishes" className="section8-card-img" />
-                  <Typography type="text-sm" className="section8-card-date">
-                    {data.date}
-                  </Typography>
-                  <Typography type="text-lg" className="section8-card-description">
-                    {data.description}
-                  </Typography>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <div ref={cardSection8} className="section8-container-card">
+          {dataSection8.map((data, i) => (
+            <div key={i + 'section8-card'} className="section8-card">
+              <img
+                key={i + 'section8-cardImg'}
+                src={data.image}
+                alt="dishes"
+                className="section8-card-img"
+              />
+              <Typography
+                key={i + 'section8-cardDate'}
+                type="text-sm"
+                className="section8-card-date"
+              >
+                {data.date}
+              </Typography>
+              <Typography
+                key={i + 'section8-cardDescription'}
+                type="text-lg"
+                className="section8-card-description"
+              >
+                {data.description}
+              </Typography>
+            </div>
+          ))}
         </div>
       </div>
-      <div></div>
+      <div className="section8-read-more">
+        <Typography type="text-lg" className="section8-read-more-text">
+          READ MORE <SvgArrowRight className="section8-read-more-arrow-right" />
+        </Typography>
+      </div>
     </div>
   );
 };
