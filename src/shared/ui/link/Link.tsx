@@ -1,4 +1,4 @@
-import './button.scss';
+import './link.scss';
 import cn from 'classnames';
 type type = '';
 
