@@ -29,7 +29,79 @@ export const dataHealthyTasty = {
       vegetables: 4,
     },
     {
+      image: MainDish1PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
       image: MainDish3PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish1PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish4PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish1PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish2PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish1PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish3PNG,
+      title: 'Authentic chicken gapao with colorful vegetables',
+      description:
+        'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
+      calorie: 205,
+      protein: 26.1,
+      vegetables: 4,
+    },
+    {
+      image: MainDish1PNG,
       title: 'Authentic chicken gapao with colorful vegetables',
       description:
         'Chicken gapao with the flavor of fish sauce and basil, made with dometic chicken and plenty of colorful vegetables.',
