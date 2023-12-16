@@ -7,16 +7,21 @@ import { useEffect, useRef, useState } from 'react';
 type Props = {};
 export const Section8: React.FC<any> = ({}: Props) => {
   const cardSection8 = useRef<HTMLDivElement>(null);
-  const [isActiveRight, setIsActiveRight] = useState(true);
+  const slideSection8 = useRef<HTMLDivElement>(null);
+  const [isActiveRight, setIsActiveRight] = useState(false);
   const [isActiveLeft, setIsActiveLeft] = useState(false);
   const [numberSlide, setNumberSlide] = useState(0);
   useEffect(() => {
-    if (cardSection8.current) {
-      const x = cardSection8.current.clientWidth / 372;
-      if (numberSlide > 0) setIsActiveLeft(true);
-      else setIsActiveLeft(false);
-      if (numberSlide > x - 1) setIsActiveRight(false);
-      else setIsActiveRight(true);
+    if (cardSection8.current && slideSection8.current) {
+      const x = cardSection8.current.clientWidth;
+      const z = slideSection8.current.clientWidth;
+      console.log(x);
+
+      // if (numberSlide > 0) setIsActiveLeft(true);
+      // else setIsActiveLeft(false);
+      // if (numberSlide > x - 1) setIsActiveRight(false);
+      // else setIsActiveRight(true);
+      // if()
     }
   }, [numberSlide]);
   const goRight = () => {
@@ -62,7 +67,7 @@ export const Section8: React.FC<any> = ({}: Props) => {
           </Button>
         </div>
       </div>
-      <div>
+      <div ref={slideSection8} className="section8-slide-container">
         <div ref={cardSection8} className="section8-container-card">
           {dataSection8.map((data, i) => (
             <div key={i + 'section8-card'} className="section8-card">

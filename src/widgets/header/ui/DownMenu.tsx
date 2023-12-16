@@ -11,6 +11,9 @@ import classNames from 'classnames';
 
 type Props = { isActiveProduct: boolean };
 export const DownMenu: React.FC<any> = ({ isActiveProduct }: Props) => {
+  isActiveProduct
+    ? (document.body.style.overflowY = 'hidden')
+    : (document.body.style.overflowY = 'scroll');
   return (
     <div
       className={classNames('dropdown-content', {

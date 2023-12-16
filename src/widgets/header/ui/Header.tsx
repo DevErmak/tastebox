@@ -20,14 +20,17 @@ export const Header: React.FC<any> = ({}: Props) => {
   return (
     <div
       className={classNames('header', {
-        'header-active': isActiveProduct && !isActiveBurger,
+        'header-active': isActiveProduct,
       })}
     >
       <div className="header__menu">
         <Button
           type="outline"
           className={'dropdown-button'}
-          onClick={() => setIsActiveProduct(!isActiveProduct)}
+          onClick={() => {
+            setIsActiveProduct(!isActiveProduct);
+            setIsActiveBurger(false);
+          }}
         >
           <Typography
             type="text-md"
@@ -47,7 +50,7 @@ export const Header: React.FC<any> = ({}: Props) => {
           <Typography
             type="text-md"
             className={classNames('our-story', {
-              'our-story-active': isActiveProduct && !isActiveBurger,
+              'our-story-active': isActiveProduct,
             })}
           >
             our story
@@ -57,13 +60,13 @@ export const Header: React.FC<any> = ({}: Props) => {
           <Typography
             type="text-md"
             className={classNames('faq', {
-              'faq-active': isActiveProduct && !isActiveBurger,
+              'faq-active': isActiveProduct,
             })}
           >
             faq{' '}
             <SvgArrowUpRight
               className={classNames('arrow-up-right', {
-                'arrow-up-right-active': isActiveProduct && !isActiveBurger,
+                'arrow-up-right-active': isActiveProduct,
               })}
             />
           </Typography>

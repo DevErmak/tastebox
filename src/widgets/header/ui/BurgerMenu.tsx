@@ -14,6 +14,9 @@ import classNames from 'classnames';
 
 type Props = { isActiveBurger: boolean };
 export const BurgerMenu: React.FC<any> = ({ isActiveBurger }: Props) => {
+  isActiveBurger
+    ? (document.body.style.overflowY = 'hidden')
+    : (document.body.style.overflowY = 'scroll');
   return (
     <div
       className={classNames('burger-menu-container', {
