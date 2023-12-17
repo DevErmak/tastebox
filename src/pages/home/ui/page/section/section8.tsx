@@ -7,45 +7,68 @@ import { useEffect, useRef, useState } from 'react';
 type Props = {};
 export const Section8: React.FC<any> = ({}: Props) => {
   const cardSection8 = useRef<HTMLDivElement>(null);
-  const slideSection8 = useRef<HTMLDivElement>(null);
+  const section8 = useRef<HTMLDivElement>(null);
   const [isActiveRight, setIsActiveRight] = useState(false);
   const [isActiveLeft, setIsActiveLeft] = useState(false);
+  // const [isAdd, setIsAdd] = useState(false);
   const [numberSlide, setNumberSlide] = useState(0);
   useEffect(() => {
-    if (cardSection8.current && slideSection8.current) {
-      const x = cardSection8.current.clientWidth;
-      const z = slideSection8.current.clientWidth;
-      console.log(x);
+    if (cardSection8.current && section8.current) {
+      const z = cardSection8.current.clientWidth / 372;
+      const x = section8.current.clientWidth / 372;
+      console.log('', z);
+      console.log('z', z);
+      console.log('x', x);
+      console.log('dataSection8.length', dataSection8.length);
+      cardSection8.current.style.transform = `translateX(-${numberSlide * 385}px)`;
+      console.log('asd', dataSection8.length - x - numberSlide);
 
-      // if (numberSlide > 0) setIsActiveLeft(true);
-      // else setIsActiveLeft(false);
+      if (dataSection8.length - x - numberSlide - 1 < 0) setIsActiveRight(false);
+      else setIsActiveRight(true);
+
+      console.log('z', z);
+      console.log('x', x);
+
+      if (numberSlide > 0) setIsActiveLeft(true);
+      else setIsActiveLeft(false);
       // if (numberSlide > x - 1) setIsActiveRight(false);
       // else setIsActiveRight(true);
       // if()
     }
   }, [numberSlide]);
   const goRight = () => {
-    if (cardSection8.current) {
-      const x = cardSection8.current.clientWidth / 372;
-      if (numberSlide < x - 1) {
-        setNumberSlide(numberSlide + 1);
-        cardSection8.current.style.transform = `translateX(-${372 * (numberSlide + 1)}px)`;
-      }
+    if (section8.current && cardSection8.current) {
+      const z = cardSection8.current.clientWidth / 380;
+      const x = section8.current.clientWidth;
+      console.log('numberSlide < dataSection8.length', numberSlide < dataSection8.length);
+      if (isActiveRight)
+        if (numberSlide < dataSection8.length) {
+          setNumberSlide(numberSlide + 1);
+          // setIsActiveRight(true);
+          // } else {
+          // setNumberSlide(z - x);
+          // setIsAdd(true);
+          // cardSection8.current.style.transform = `translateX(-${z - x + 125}px)`;
+          // setIsActiveRight(false);
+        }
     }
+    console.log(numberSlide);
   };
   const goLeft = () => {
     if (cardSection8.current) {
-      const x = cardSection8.current.clientWidth / 372;
+      // console.log(isAdd);
+      // if (isAdd) {
+      // setNumberSlide(numberSlide - 95);
+      // setIsAdd(false);
+      // }
       if (numberSlide > 0) {
         setNumberSlide(numberSlide - 1);
-        cardSection8.current.style.transform = `translateX(-${
-          cardSection8.current.clientWidth - 372 - 372 * (x - numberSlide)
-        }px)`;
       }
     }
+    console.log(numberSlide);
   };
   return (
-    <div className="section8">
+    <div ref={section8} className="section8">
       <div className="section8-title">
         <Typography type="display-sm" className={'section8-news'}>
           News
@@ -67,7 +90,7 @@ export const Section8: React.FC<any> = ({}: Props) => {
           </Button>
         </div>
       </div>
-      <div ref={slideSection8} className="section8-slide-container">
+      <div className="section8-slide-container">
         <div ref={cardSection8} className="section8-container-card">
           {dataSection8.map((data, i) => (
             <div key={i + 'section8-card'} className="section8-card">

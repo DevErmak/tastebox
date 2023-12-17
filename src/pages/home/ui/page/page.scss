@@ -652,9 +652,9 @@
 }
 .section8-container-card {
   display: flex;
-  width: 1450px;
   align-items: flex-start;
   gap: 38px;
+  transition: all 0.5s;
 }
 .section8-card {
   display: flex;
