@@ -2,7 +2,7 @@ import { dataSection8 } from '@/shared/data/data-section8';
 import { Button, Typography } from '@/shared/ui';
 import { ReactComponent as SvgArrowRight } from '@/shared/ui/svg/arrow-right.svg';
 import { ReactComponent as SvgArrowLeft } from '@/shared/ui/svg/arrow-left.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 type Props = {};
 export const Section8: React.FC<any> = ({}: Props) => {
@@ -10,57 +10,47 @@ export const Section8: React.FC<any> = ({}: Props) => {
   const section8 = useRef<HTMLDivElement>(null);
   const [isActiveRight, setIsActiveRight] = useState(false);
   const [isActiveLeft, setIsActiveLeft] = useState(false);
-  // const [isAdd, setIsAdd] = useState(false);
   const [numberSlide, setNumberSlide] = useState(0);
+  function useWindowSize() {
+    const [size, setSize] = useState(0);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize(window.innerWidth);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  }
+  const width = useWindowSize();
   useEffect(() => {
     if (cardSection8.current && section8.current) {
-      const z = cardSection8.current.clientWidth / 372;
-      const x = section8.current.clientWidth / 372;
-      console.log('', z);
-      console.log('z', z);
-      console.log('x', x);
-      console.log('dataSection8.length', dataSection8.length);
-      cardSection8.current.style.transform = `translateX(-${numberSlide * 385}px)`;
-      console.log('asd', dataSection8.length - x - numberSlide);
-
-      if (dataSection8.length - x - numberSlide - 1 < 0) setIsActiveRight(false);
-      else setIsActiveRight(true);
-
-      console.log('z', z);
-      console.log('x', x);
+      const x = section8.current.clientWidth;
+      cardSection8.current.style.transform = `translateX(-${numberSlide * 372}px)`;
+      if (numberSlide * 372 + x > dataSection8.length * 372) {
+        setIsActiveRight(false);
+        cardSection8.current.style.transform = `translateX(-${
+          dataSection8.length * 372 - x + 100
+        }px)`;
+      } else setIsActiveRight(true);
 
       if (numberSlide > 0) setIsActiveLeft(true);
       else setIsActiveLeft(false);
-      // if (numberSlide > x - 1) setIsActiveRight(false);
-      // else setIsActiveRight(true);
-      // if()
     }
-  }, [numberSlide]);
+  }, [numberSlide, width]);
   const goRight = () => {
     if (section8.current && cardSection8.current) {
-      const z = cardSection8.current.clientWidth / 380;
       const x = section8.current.clientWidth;
-      console.log('numberSlide < dataSection8.length', numberSlide < dataSection8.length);
       if (isActiveRight)
-        if (numberSlide < dataSection8.length) {
+        if (numberSlide * 372 + x < dataSection8.length * 372) {
           setNumberSlide(numberSlide + 1);
-          // setIsActiveRight(true);
-          // } else {
-          // setNumberSlide(z - x);
-          // setIsAdd(true);
-          // cardSection8.current.style.transform = `translateX(-${z - x + 125}px)`;
-          // setIsActiveRight(false);
         }
     }
     console.log(numberSlide);
   };
   const goLeft = () => {
     if (cardSection8.current) {
-      // console.log(isAdd);
-      // if (isAdd) {
-      // setNumberSlide(numberSlide - 95);
-      // setIsAdd(false);
-      // }
       if (numberSlide > 0) {
         setNumberSlide(numberSlide - 1);
       }

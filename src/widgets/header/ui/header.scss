@@ -73,6 +73,8 @@
 }
 .login {
   color: var(--palette-neutral-white);
+  animation-timing-function: ease-out;
+  transition: all 1s;
 }
 .login:hover {
   color: var(--palette-tangerine-branding);
@@ -138,6 +140,7 @@
   g {
     path {
       stroke: var(--palette-neutral-white);
+      transition: all 1s;
     }
   }
 }
@@ -171,6 +174,7 @@
   gap: 8px;
   border-radius: 30px;
   border: 1px solid var(--palette-neutral-white);
+  transition: all 1s;
 }
 .header__login:hover {
   border: 1px solid var(--palette-tangerine-branding);
@@ -200,6 +204,7 @@
 }
 .header__login-active {
   border: 1px solid var(--palette-tangerine-800);
+  transition: all 0.3s;
 }
 .header__burger {
   width: 48px;

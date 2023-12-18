@@ -116,4 +116,10 @@ export const dataSection8 = [
     date: '2023.11.17',
     description: 'A new melt-in-your-mouth Christmas menu is now available in limited quantities!',
   },
+  {
+    image:
+      'https://s3-alpha-sig.figma.com/img/2c4e/bd8a/d954d05a7a3c79713a7f862aacfbe49d?Expires=1703462400&Signature=JvPzHvnFu9FuzTbzXp4R8W9896832hrlu1NWApPtOZEHAW3xElQ3g8-sSr7Iy0hyMRzSZnbW6bOgvEFL-ohgPooQfd9KmIXUtJao8VIzd-49gDojpsnnOOrZsM~iiN-gFgPKlWIfxR9FScSc6YPHGlmtpxjifIF5KDgKhiHnjAINe0bs5oXTnD489Xiuq5eJtoUtxDz7NPwIuruQH9qO1fo7IeqbqepJLY5JJ7KXeJNJ5Hb6~tOjrCjLgXXGtlEMKMVAflV2kDZHfXZTEy~MfzvbovjVwZbgtaqvxU1chepvUr9eS~x4AoBB-wSwpaKIaOILB-VB98gXtZKeEiDvNA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+    date: '2023.11.17',
+    description: 'A new melt-in-your-mouth Christmas menu is now available in limited quantities!',
+  },
 ];
