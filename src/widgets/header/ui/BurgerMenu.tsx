@@ -11,39 +11,61 @@ import { ReactComponent as SvgTiktok } from '@/shared/ui/svg/tiktok.svg';
 import { Link } from '@/shared/ui/link/Link';
 
 import classNames from 'classnames';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-type Props = { isActiveBurger: boolean };
-export const BurgerMenu: React.FC<any> = ({ isActiveBurger }: Props) => {
+type Props = {
+  isActiveBurger: boolean;
+  setIsActiveBurger: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export const BurgerMenu: React.FC<any> = ({ isActiveBurger, setIsActiveBurger }: Props) => {
   const useScrollbarWidth = () => {
     const didCompute = useRef(false);
     const widthRef = useRef(0);
+
     if (didCompute.current) return widthRef.current;
+
     const outer = document.createElement('div');
+
     outer.style.visibility = 'hidden';
     outer.style.overflow = 'scroll';
     // @ts-ignore
     outer.style.msOverflowStyle = 'scrollbar';
     document.body.appendChild(outer);
+
     const inner = document.createElement('div');
     outer.appendChild(inner);
+
     const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
     outer.parentNode?.removeChild(outer);
     didCompute.current = true;
     widthRef.current = scrollbarWidth;
     return scrollbarWidth;
   };
+
   const scrollbarWidth = useScrollbarWidth();
+
   if (isActiveBurger) {
     document.body.style.overflowY = 'hidden';
-    console.log('---------------->', scrollbarWidth);
     document.body.style.paddingRight = `${scrollbarWidth}px`;
   } else {
     document.body.style.overflowY = 'scroll';
     document.body.style.paddingRight = `unset`;
   }
+  const clickOutside = (e: MouseEvent) => {
+    if (burgerRef.current && !burgerRef.current.contains(e.target as Node)) {
+      setIsActiveBurger(false);
+    }
+  };
+  const burgerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    document.addEventListener('mousedown', clickOutside);
+    return () => {
+      document.removeEventListener('mousedown', clickOutside);
+    };
+  });
   return (
     <div
+      ref={burgerRef}
       className={classNames('burger-menu-container', {
         'burger-menu-container-active': isActiveBurger,
       })}

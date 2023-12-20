@@ -6,7 +6,7 @@ type Props = {};
 export const DefaultLayout: React.FC<any> = ({}: Props) => {
   return (
     <>
-      <Snow />
+      {/* <Snow /> */}
       <Outlet />
       <Footer />
     </>

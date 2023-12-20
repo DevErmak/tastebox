@@ -125,10 +125,11 @@ export const Header: React.FC<any> = ({}: Props) => {
           )}
         </Button>
       </div>
-      {isActiveBurger
-        ? ''
-        : createPortal(<DownMenu isActiveProduct={isActiveProduct} />, document.body)}
-      {createPortal(<BurgerMenu isActiveBurger={isActiveBurger} />, document.body)}
+      {createPortal(<DownMenu isActiveProduct={isActiveProduct} />, document.body)}
+      {createPortal(
+        <BurgerMenu isActiveBurger={isActiveBurger} setIsActiveBurger={setIsActiveBurger} />,
+        document.body,
+      )}
     </div>
   );
 };
